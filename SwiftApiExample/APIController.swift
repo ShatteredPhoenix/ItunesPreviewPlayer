@@ -72,7 +72,7 @@ class APIController {
         })
         
         // The task is just an object with all these properties set
-        // In order to actually make the web request, we need to "resume"
+        // In order to actually make the web request, I need to "resume" the task
         task.resume()
         
         
@@ -80,7 +80,7 @@ class APIController {
     
     //Function to Search ITunes for an Album
     func SearchItunesFor(searchTerm: String) {
-        // The iTunes API wants multiple terms separated by + symbols, so replace spaces with + signs
+        // The iTunes API wants multiple terms separated by + symbols, replace spaces with + signs
         let itunesSearchTerm = searchTerm.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil)
         
         // Now escape anything else that isn't URL-friendly

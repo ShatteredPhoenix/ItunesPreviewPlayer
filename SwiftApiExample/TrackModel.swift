@@ -26,6 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
 
+//Same as Album Model
 struct TrackModel {
     let title: String
     let price: String
@@ -36,6 +37,7 @@ struct TrackModel {
         self.price = price
         self.previewUrl = previewUrl
     }
+    
     
     static func tracksWithJSON(results: NSArray) -> [TrackModel] {
         var tracks = [TrackModel]()

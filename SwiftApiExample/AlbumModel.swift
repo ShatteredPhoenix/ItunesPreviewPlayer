@@ -52,10 +52,10 @@ struct AlbumModel {
         // Create an empty array of Albums to append to from this list
         var albums = [AlbumModel]()
         
-        // Store the results in our table data array
+        // Store the results in table data array
         if results.count>0 {
             
-            // Sometimes iTunes returns a collection, not a track, so we check both for the 'name'
+            // Sometimes iTunes returns a collection, not a track, so check both for the 'name'
             for result in results {
                 
                 var name = result["trackName"] as? String

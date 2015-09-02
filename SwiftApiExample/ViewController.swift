@@ -108,6 +108,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     We then put this information in the cell
     */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as! UITableViewCell
         
         let album = self.Alb[indexPath.row]
@@ -119,7 +120,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.textLabel?.text = album.title
         
         // Start by setting the cell's image to a static file
-        // Without this, we will end up without an image view!
+        // Without this, it will end up without an image view!
         cell.imageView?.image = UIImage(named: "Blank52")
         
         let thumbnailURLString = album.thumbnailImageURL
@@ -132,14 +133,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         else {
             // The image isn't cached, download the img data
-            // We should perform this in a background thread
+            // Perform this in a background thread
             let request: NSURLRequest = NSURLRequest(URL: thumbnailURL)
             let mainQueue = NSOperationQueue.mainQueue()
             NSURLConnection.sendAsynchronousRequest(request, queue: mainQueue, completionHandler: { (response, data, error) -> Void in
                 if error == nil {
                     // Convert the downloaded data in to a UIImage object
                     let image = UIImage(data: data)
-                    // Store the image in to our cache
+                    // Store the image into the cache
                     self.imageCache[thumbnailURLString] = image
                     // Update the cell
                     dispatch_async(dispatch_get_main_queue(), {
